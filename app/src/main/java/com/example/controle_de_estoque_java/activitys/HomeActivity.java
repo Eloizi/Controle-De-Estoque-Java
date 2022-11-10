@@ -53,6 +53,7 @@ public class HomeActivity extends AppCompatActivity {
 
     }
     private void linkage(){
+        listView = findViewById(R.id.listView);
         btNovo = findViewById(R.id.btNovo);
         btExcluir = findViewById(R.id.btExcluir);
         btNovo.setOnClickListener(new View.OnClickListener() {
