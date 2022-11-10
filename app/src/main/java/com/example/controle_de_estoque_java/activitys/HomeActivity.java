@@ -22,6 +22,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 
 import com.example.controle_de_estoque_java.R;
+import com.example.controle_de_estoque_java.helpers.ProdutoDAO;
 import com.example.controle_de_estoque_java.models.Produto;
 
 import java.util.ArrayList;
@@ -36,12 +37,35 @@ public class HomeActivity extends AppCompatActivity {
     private Button btExcluir, btNovo;
     private final int TIPO_CRIACAO = 0;
     private final int TIPO_MODIFICACAO = 1;
+    private List<Produto> productList = new ArrayList<>();
+
+
+    private void listardados(){
+        ProdutoDAO produtoDAO = new ProdutoDAO(getApplicationContext());
+        productList = produtoDAO.listar();
+
+        ArrayList<String> resultado=new ArrayList<String>();
+        for (int i = 0; i < productList.size(); i++) {
+            String x = "Produto: " + productList.get(i).getDescricao() + " \n QTD: " + productList.get(i).getQuantidade();
+            resultado.add(x);
+        }
+        ArrayAdapter meuAdaptador=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,android.R.id.text1,resultado);
+        listView.setAdapter(meuAdaptador);
+    }
+
+    public HomeActivity() {
+    }
 
     @Override
     protected void onResume() {
         super.onResume();
+        listardados();
 
     }
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
