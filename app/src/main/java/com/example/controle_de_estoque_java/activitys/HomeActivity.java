@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
             String x = "Produto: " + productList.get(i).getDescricao() + " \n QTD: " + productList.get(i).getQuantidade();
             resultado.add(x);
         }
-        ArrayAdapter meuAdaptador=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,android.R.id.text1,resultado);
+        ArrayAdapter meuAdaptador=new ArrayAdapter<String>(this, R.layout.lista_personalizada,android.R.id.text1,resultado);
         listView.setAdapter(meuAdaptador);
     }
 
