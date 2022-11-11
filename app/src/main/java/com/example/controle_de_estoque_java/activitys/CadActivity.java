@@ -73,7 +73,14 @@ public class CadActivity extends AppCompatActivity {
         btCad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (edicao){
+                if (edtDescricao.getText().length()==0){
+                    edtDescricao.setError("Não deixe o campo vazio");
+                    edtDescricao.requestFocus();
+                }else if(edtQuantidade.getText().length()==0){
+                    edtQuantidade.setError("Não deixe o campo vazio");
+                    edtQuantidade.requestFocus();
+
+                }else if (edicao){
                     alterarProduto();
                 }else{
                     salvarProduto();
