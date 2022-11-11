@@ -7,6 +7,8 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+/**
+ * Classe que cria e instancia o banco de dados SQLite*/
 public class DbHelper extends SQLiteOpenHelper {
     public static int VERSION= 1;
     public static String NOME_DB= "DB_ESTOQUE_2";

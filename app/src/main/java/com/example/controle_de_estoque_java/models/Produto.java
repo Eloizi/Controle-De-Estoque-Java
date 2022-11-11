@@ -1,7 +1,7 @@
 package com.example.controle_de_estoque_java.models;
 
 import java.io.Serializable;
-
+/** Representa o produto*/
 public class Produto implements Serializable {
 
     private Long id;//Auto gerado pelo SQLite

@@ -13,6 +13,8 @@ import com.example.controle_de_estoque_java.my_codes.IModelDAO;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe responsavel por fazer a interação do aplicativo com o banco de dados*/
 public class ProdutoDAO implements IModelDAO<Produto> {
     private SQLiteDatabase escreve;
     private SQLiteDatabase le;
@@ -21,6 +23,7 @@ public class ProdutoDAO implements IModelDAO<Produto> {
         DbHelper dbHelper = new DbHelper(context);
         this.escreve = dbHelper.getWritableDatabase();
         le = dbHelper.getReadableDatabase();
+
     }
     /**
      * Método que salva o objeto selecionado no SQLite
@@ -41,7 +44,6 @@ public class ProdutoDAO implements IModelDAO<Produto> {
             return false;
         }
     }
-
     /**
      * Método que atualiza o objeto selecionado no SQLite
      * @param produto recebe o objeto que se deseja atualizar

@@ -40,18 +40,7 @@ public class HomeActivity extends AppCompatActivity {
     private boolean block = true;
 
 
-    private void listardados(){
-        ProdutoDAO produtoDAO = new ProdutoDAO(getApplicationContext());
-        productList = produtoDAO.listar();
 
-        ArrayList<String> resultado=new ArrayList<String>();
-        for (int i = 0; i < productList.size(); i++) {
-            String x = "Produto: " + productList.get(i).getDescricao() + " \n QTD: " + productList.get(i).getQuantidade();
-            resultado.add(x);
-        }
-        ArrayAdapter meuAdaptador=new ArrayAdapter<String>(this, R.layout.lista_personalizada,android.R.id.text1,resultado);
-        listView.setAdapter(meuAdaptador);
-    }
 
     public HomeActivity() {
     }
@@ -62,11 +51,6 @@ public class HomeActivity extends AppCompatActivity {
         listardados();
 
     }
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +60,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
     }
+    /**Método que linka os itens com a view do projeto*/
     private void linkage(){
         listView = findViewById(R.id.listView);
         btNovo = findViewById(R.id.btNovo);
@@ -147,9 +132,19 @@ public class HomeActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+    /**Método qque lista os itens e confira o adapter view**/
+    private void listardados(){
+        ProdutoDAO produtoDAO = new ProdutoDAO(getApplicationContext());
+        productList = produtoDAO.listar();
 
-
-
+        ArrayList<String> resultado=new ArrayList<String>();
+        for (int i = 0; i < productList.size(); i++) {
+            String x = "Produto: " + productList.get(i).getDescricao() + " \n QTD: " + productList.get(i).getQuantidade();
+            resultado.add(x);
+        }
+        ArrayAdapter meuAdaptador=new ArrayAdapter<String>(this, R.layout.lista_personalizada,android.R.id.text1,resultado);
+        listView.setAdapter(meuAdaptador);
     }
 
 

@@ -22,8 +22,6 @@ import java.util.ArrayList;
 
 public class CadActivity extends AppCompatActivity {
 
-
-
     private TextInputEditText edtDescricao;
     private EditText edtQuantidade;
     private Button btCad;
@@ -31,7 +29,6 @@ public class CadActivity extends AppCompatActivity {
     private ConstraintLayout consCad;
     private Produto currentProduto;
     private FloatingActionButton fab;
-
 
     @Override
     protected void onResume() {
@@ -59,11 +56,13 @@ public class CadActivity extends AppCompatActivity {
 
 
     }
+    /**
+     * Método q ue inclui os dados nos EditText caso seja uma edição*/
     private void incluirDados(){
         edtDescricao.setText(currentProduto.getDescricao());
         edtQuantidade.setText(""+currentProduto.getQuantidade());
     }
-
+/**Método que linka os itens com a view*/
     private void linkage(){
         consCad = findViewById(R.id.consCad);
         edtDescricao = findViewById(R.id.edtDescricao);
@@ -105,6 +104,7 @@ public class CadActivity extends AppCompatActivity {
         });
 
     }
+    /**Método que salva o produto atraves da classe DAO*/
     private void salvarProduto(){
         if (isOk()) {
             Produto produto = new Produto(edtDescricao.getText().toString(),
@@ -116,6 +116,7 @@ public class CadActivity extends AppCompatActivity {
             finishAfterTransition();
             releaseInstance();
     }
+    /**Método para alterar um produto*/
     private void alterarProduto(){
         if (isOk()){
             currentProduto.setDescricao(edtDescricao.getText().toString());
@@ -127,6 +128,7 @@ public class CadActivity extends AppCompatActivity {
         releaseInstance();
 
     }
+    /**Método que verifica se os campos estão operantes*/
     private boolean isOk(){
         if (edtDescricao.getText().length() ==0 || edtQuantidade.getText().length() ==0) {
             return false;
